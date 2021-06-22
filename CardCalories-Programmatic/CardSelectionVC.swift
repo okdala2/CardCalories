@@ -18,14 +18,15 @@ class CardSelectionVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .blue
-        
+        view.backgroundColor = .systemTeal
+
         configureUI()
     }
     
     func configureUI() {
         configureCardImageView()
         configureStopButton()
+        configureRestartButton()
     }
     
     func configureCardImageView() {
@@ -49,7 +50,17 @@ class CardSelectionVC: UIViewController {
             stopButton.heightAnchor.constraint(equalToConstant: 50),
             stopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stopButton.topAnchor.constraint(equalTo: cardImageView.bottomAnchor, constant: 30)
-
+        ])
+    }
+    
+    func configureRestartButton() {
+        view.addSubview(restartButton)
+        
+        NSLayoutConstraint.activate([
+            restartButton.widthAnchor.constraint(equalToConstant: 115),
+            restartButton.heightAnchor.constraint(equalToConstant: 50),
+            restartButton.leadingAnchor.constraint(equalTo: stopButton.leadingAnchor),
+            restartButton.topAnchor.constraint(equalTo: stopButton.bottomAnchor, constant: 20)
         ])
     }
 }
