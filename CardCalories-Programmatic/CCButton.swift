@@ -9,7 +9,6 @@ import UIKit
 
 class CCButton: UIButton {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -22,6 +21,7 @@ class CCButton: UIButton {
     
     init(backgroundColor: UIColor, title: String) {
         super.init(frame: .zero)
+        configure()
         self.backgroundColor = backgroundColor
         setTitle(title, for: .normal)
         
