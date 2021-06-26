@@ -16,13 +16,15 @@ class RulesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         
         configureUI()
     }
     
     func configureUI() {
         configureTitlabel()
+        configureRuleslabel()
+        configureExcerciselabel()
     }
     
     func configureTitlabel() {
@@ -51,8 +53,23 @@ class RulesVC: UIViewController {
         NSLayoutConstraint.activate([
             rulesLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
             rulesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            
+            rulesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+
         ])
+    }
+    
+    func configureExcerciselabel() {
+        view.addSubview(excerciseLabel)
+        excerciseLabel.translatesAutoresizingMaskIntoConstraints = false
+        excerciseLabel.text = "♠️ = Push-ups\n\n❤️ = Sit-ups\n\n♣️ = Burpees\n\n♦️ = Jumping Jacks"
+        excerciseLabel.numberOfLines = 0
+        excerciseLabel.font = .systemFont(ofSize: 19, weight: .semibold)
         
+        NSLayoutConstraint.activate([
+            excerciseLabel.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 25),
+            excerciseLabel.widthAnchor.constraint(equalToConstant: 200),
+            excerciseLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+
+        ])
     }
 }
