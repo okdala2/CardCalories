@@ -17,30 +17,31 @@ class CardSelectionVC: UIViewController {
     let cards: [UIImage] = CardDeck.allValues
     var timer: Timer!
     
-   
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(showRandomCard), userInfo: nil, repeats: true)
-    }
-    
-    @objc func stopTimer() {
-        timer.invalidate()
-    }
-    
-    
-    @objc func showRandomCard() {
-        cardImageView.image = cards.randomElement()
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .systemTeal
-
         configureUI()
         startTimer()
     }
+    
+     func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(showRandomCard), userInfo: nil, repeats: true)
+     }
+     
+     @objc func stopTimer() {
+         timer.invalidate()
+     }
+     
+     @objc func resetTimer() {
+         stopTimer()
+         startTimer()
+     }
+     
+     @objc func showRandomCard() {
+         cardImageView.image = cards.randomElement()
+     }
     
     func configureUI() {
         configureCardImageView()
@@ -52,6 +53,7 @@ class CardSelectionVC: UIViewController {
     func configureCardImageView() {
         view.addSubview(cardImageView)
         cardImageView.translatesAutoresizingMaskIntoConstraints = false
+        cardImageView.isUserInteractionEnabled = true
         cardImageView.image = UIImage(named: "AS")
         
         NSLayoutConstraint.activate([
@@ -64,7 +66,8 @@ class CardSelectionVC: UIViewController {
     
     func configureStopButton() {
         view.addSubview(stopButton)
-        stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpOutside)
+
+        stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             stopButton.widthAnchor.constraint(equalToConstant: 260),
@@ -76,6 +79,8 @@ class CardSelectionVC: UIViewController {
     
     func configureRestartButton() {
         view.addSubview(restartButton)
+        
+        restartButton.addTarget(self, action: #selector(resetTimer), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             restartButton.widthAnchor.constraint(equalToConstant: 115),

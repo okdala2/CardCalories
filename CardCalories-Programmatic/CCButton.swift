@@ -28,9 +28,10 @@ class CCButton: UIButton {
     }
     
     func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 8
         titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .bold)
         setTitleColor(.white, for: .normal)
-        translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = true
     }
 }
