@@ -54,7 +54,6 @@ class RulesVC: UIViewController {
             rulesLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
             rulesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             rulesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-
         ])
     }
     
@@ -66,10 +65,9 @@ class RulesVC: UIViewController {
         excerciseLabel.font = .systemFont(ofSize: 19, weight: .semibold)
         
         NSLayoutConstraint.activate([
-            excerciseLabel.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 25),
+            excerciseLabel.topAnchor.constraint(equalTo: rulesLabel.bottomAnchor, constant: 60),
             excerciseLabel.widthAnchor.constraint(equalToConstant: 200),
             excerciseLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-
         ])
     }
 }
