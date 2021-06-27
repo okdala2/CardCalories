@@ -21,7 +21,7 @@ class CardSelectionVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .cyan
         configureUI()
         startTimer()
     }
