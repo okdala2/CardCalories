@@ -13,6 +13,7 @@ class CardSelectionVC: UIViewController {
     let stopButton = CCButton(backgroundColor: .systemRed, title: "Stop")
     let restartButton = CCButton(backgroundColor: .systemGreen, title: "Reset")
     let rulesButton = CCButton(backgroundColor: .systemBlue, title: "Rules")
+    let cardViewTitleLabel = UILabel()
     
     let cards: [UIImage] = CardDeck.allValues
     var timer: Timer!
@@ -21,7 +22,7 @@ class CardSelectionVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
         configureUI()
         startTimer()
     }
@@ -44,10 +45,26 @@ class CardSelectionVC: UIViewController {
      }
     
     func configureUI() {
+        configureTitleLabel()
         configureCardImageView()
         configureStopButton()
         configureRestartButton()
         configureRulesButton()
+    }
+    
+    func configureTitleLabel() {
+        view.addSubview(cardViewTitleLabel)
+        cardViewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        cardViewTitleLabel.text = "Card Calories"
+        cardViewTitleLabel.font = .systemFont(ofSize: 40, weight: .bold)
+        cardViewTitleLabel.textAlignment = .center
+        cardViewTitleLabel.textColor = .red
+        
+        NSLayoutConstraint.activate([
+            cardViewTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            cardViewTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+          
+        ])
     }
     
     func configureCardImageView() {
